@@ -20,7 +20,7 @@ model User {
   login     String   @unique                                                // intra login
   fname     String                                                          // first name
   lname     String                                                          // last name
-  email     String   @unique                                                // email
+  email     String?   @unique                                                // email
   avatar    String?                                                         // avatar
   tasks     Task[]                                                          // tasks
 }
