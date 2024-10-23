@@ -5,7 +5,10 @@ import { use, useEffect } from "react";
 export default function Home() {
 
   useEffect(() => {
-    fetch("/api/tasks", { method: "GET" }).then((res) => res.json()).finally(console.log).catch(console.error);
+    fetch('/api/tasks?user_id=ft_001', )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }, []);
 
   return (
