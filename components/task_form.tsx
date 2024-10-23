@@ -1,10 +1,14 @@
+import { useCallback, useEffect } from "react";
 
+type TaskFormProps = {
+    [key: string]: string;
+};
 
 const TaskForm: React.FC = () => {
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data: any = {
+        const data: TaskFormProps = {
             "title": formData.get("title") as string,
             "ito": "ft_002",
             "iby": "ft_001",
@@ -28,10 +32,18 @@ const TaskForm: React.FC = () => {
         } else {
             console.error("Failed to create task");
         }
+        e.target.reset()
     };
-    
+    const submit = useCallback(submitHandler, []);
+
+    useEffect(() => {
+        console.log("Task Form mounted");
+        return () => {
+            console.log("Task Form unmounted");
+        };
+    }, []);
     return (
-        <form onSubmit={submitHandler} className="flex flex-col gap-1">
+        <form onSubmit={submit} className="flex flex-col gap-1">
             <input type="text" name="title" placeholder="Title" className="p-2" />
             <input type="text" name="desc" placeholder="Description" className="p-2" />
             <input type="text" name="label" placeholder="Label" className="p-2" />
