@@ -10,7 +10,7 @@ const List: React.FC<{ tasks: Task[] }> = ({ tasks }) => {
                     <span className="font-bold text-xl">{task.title}: </span>
                     <span>{task.desc}</span>
                 </span>
-                <span>{task.status}</span>
+                <span>{task.label}</span>
             </li>
             ))}
         </ul>

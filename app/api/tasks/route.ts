@@ -22,8 +22,8 @@ export async function GET(req: NextRequest): Promise<any> {
 
 export async function POST(req: NextRequest): Promise<any> {
     try {
-        const body = await req.json();
-        const task: Task = body.task;
+        const task: Task = await req.json();
+        console.log(task);
 
         const newTask = await TaskService.createTask(task);
         return NextResponse.json({ task: newTask }, { status: 201 });

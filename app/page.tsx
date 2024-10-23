@@ -9,7 +9,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    fetch("/api/tasks?user_id=ft_001").then((res) => res.json()).then((data) => setTasks(data.tasks));
+    fetch("/api/tasks?user_id=ft_002").then((res) => res.json()).then((data) => setTasks(data.tasks));
   }, []);
 
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       </div>
       <div className="bg-blue-600 h-full w-full">
         <ul className="flex flex-col gap-1">
-          {/* <List tasks={tasks} /> */}
+          <List tasks={tasks} />
           <TaskForm />
         </ul>
       </div>
