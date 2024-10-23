@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { type Task } from "@prisma/client";
+import List from "@/components/list";
+import TaskForm from "@/components/task_form";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -18,16 +20,9 @@ export default function Home() {
         </h1>
       </div>
       <div className="bg-blue-600 h-full w-full">
-        <ul className="flex flex-col gap-1 mx-auto">
-          {tasks.map((task) => (
-            <li key={task.id} className="flex justify-between items-center bg-black bg-opacity-50 p-2">
-              <span className="flex flex-col">
-                <span className="font-bold text-xl">{task.title}: </span>
-                <span>{task.desc}</span>
-              </span>
-              <span>{task.status}</span>
-            </li>
-          ))}
+        <ul className="flex flex-col gap-1">
+          {/* <List tasks={tasks} /> */}
+          <TaskForm />
         </ul>
       </div>
       <div className="bg-red-600 h-40 w-full"></div>
