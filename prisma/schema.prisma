@@ -30,8 +30,8 @@ model Task {
   id        Int      @id @default(autoincrement())                          // id
   title     String                                                          // title
   desc      String?                                                         // description (optional)
-  label     String   @default("to-do")                                      // label
-  status    String   @default("created")                                    // status
+  label     String   @default("to-do")                                      // label (to-do, urgent, important, ...)
+  status    String   @default("created")                                    // status (created, in-progress, ignored, done)
   iat       DateTime @default(now())                                        // issued at
   iby       String                                                          // issued by
   ito       String                                                          // issued to
