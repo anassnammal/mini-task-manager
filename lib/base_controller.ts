@@ -2,7 +2,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "./prisma";
 
-export type METHOD = "GET" | "POST" | "PUT" | "DELETE" | undefined;
+export type METHODS = "GET" | "POST" | "PUT" | "DELETE" | undefined;
 
 export abstract class BaseController {
     protected prisma: typeof prisma | null = null;
@@ -20,13 +20,24 @@ export abstract class BaseController {
 
     public async handleRequest(req: NextApiRequest, res: NextApiResponse) {
 
-        const method = req.method as METHOD;
-        if (method && method in this) {
-            await this[method as keyof BaseController](req, res);
-        }
-        else {
-            res.setHeader("Allow", ["GET", "POST", "PUT", "DELETE"]);
-            res.status(405).end(`Method ${method} Not Allowed`);
-        }
+        const method = req.method as METHODS;
+        console.log(method, req.url);
+        switch (method) {
+            case "GET":
+                await this.GET(req, res);
+                break;
+            case "POST":
+                await this.POST(req, res);
+                break;
+            case "PUT":
+                await this.PUT(req, res);
+                break;
+            case "DELETE":
+                await this.DELETE(req, res);
+                break;
+            default:
+                res.setHeader("Allow", ["GET", "POST", "PUT", "DELETE"]);
+                res.status(405).end(`Method ${method} Not Allowed`);
+        };
     }
 }
