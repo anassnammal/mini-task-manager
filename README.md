@@ -5,11 +5,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, install deps
+First, install deps, and run the database container
 ```bash
-npm i
+npm i            # install deps
+
+bash run_db.sh   # pull and run psql db
+
 # in case you want to generate some random data:
+
 npm run seed
+
 # note that the seed file in prisma dir, you can modify it to generate more data if you'd like 🙂
 ```
 
