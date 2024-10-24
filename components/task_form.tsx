@@ -83,7 +83,7 @@ const TaskForm: React.FC<{
                 <option value="optional">Optional Task</option>
                 <option value="remainder">Remainder</option>
             </select>
-            <button type="submit" className="p-2 bg-green-500 text-white">{task ? "Update" : "Create"} Task</button>
+            <button type="submit" className="p-2  text-white">{task ? "Update" : "Create"} Task</button>
         </form>
     );
 };
