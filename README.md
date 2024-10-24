@@ -1,35 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Task Manager
 
-## This project is a simple personal task manager with a basic functionality for CRUD operations.
+## Overview
 
+This project is a simple personal task manager that provides basic functionality for CRUD (Create, Read, Update, Delete) operations.
 
 ## Getting Started
 
-First, install deps, and run the database container
-```bash
-npm i            # install deps
-
-bash run_db.sh   # pull and run psql db
-
-npx prisma db push # initiat database tables
-
-# in case you want to generate some random data:
-
-npm run seed
-
-# note that the seed file in prisma dir, you can modify it to generate more data if you'd like 🙂
-```
-
-Second, run the development server:
+To start the development server for testing, simply run the following script:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bash run_project.sh
 ```
 
+## Project Structure
+
+### Technologies Used
+
+- **Next.js** for both the backend and frontend:
+  - Backend: Powered by Next.js API Routes
+  - Frontend: Implemented as a Single Page Application (SPA)
+- **Prisma ORM** for database queries
+
+### Code Style
+
+In this project, I aimed to write maintainable and scalable code. After a peer suggested the Model-View-Controller (MVC) design pattern, I conducted some research to understand how Next.js handles server-side and client-side functionalities. Implementing MVC seemed like a natural fit for this project:
+
+- **Model**: Prisma ORM handles the data layer.
+- **View**: Next.js Client components manage the frontend.
+- **Controller**: Next.js API Routes handle business logic.
+
+To ensure modularity and clean separation of concerns, I also implemented:
+
+- A **Singleton** to manage the Prisma Client instance.
+- A **Prisma Service** to handle CRUD operations using Prisma.
+
+## Recommendations
+
+Feel free to:
+
+- Clone the source code and experiment with it.
+- Reach out if you'd like to discuss the project, share knowledge, or exchange tips and ideas.
 
