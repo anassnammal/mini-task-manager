@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node --loader ts-node/esm prisma/seed.ts"
+    "seed": "node --loader ts-node/esm prisma/seed.ts",
+    "prisma:dev": "npx prisma db push",
+    "prisma:prod": "npx prisma migrate deploy",
+    "prisma:test": "npx prisma db push && npm run seed"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",
