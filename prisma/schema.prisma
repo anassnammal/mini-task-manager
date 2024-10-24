@@ -20,6 +20,6 @@ model Task {
   title     String                                                          // title
   desc      String?                                                         // description (optional)
   label     String   @default("to-do")                                      // label (to-do, urgent, important, ...)
-  status    String   @default("open")                                    // status (created, in-progress, ignored, done)
+  status    String   @default("open")                                    // status ("openclear", "in-progress", "completed")
   iat       DateTime @default(now())                                        // issued at
 }

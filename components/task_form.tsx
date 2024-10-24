@@ -77,6 +77,7 @@ const TaskForm: React.FC<{
             </select>
             <select name="label" defaultValue={task?.label || "to-do"}>
                 <option value="to-do">To do Task</option>
+                <option value="important">Important Task</option>
                 <option value="urgent">Urgent Task</option>
                 <option value="optional">Optional Task</option>
                 <option value="remainder">Remainder</option>
