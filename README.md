@@ -11,6 +11,8 @@ npm i            # install deps
 
 bash run_db.sh   # pull and run psql db
 
+npx prisma db push # initiat database tables
+
 # in case you want to generate some random data:
 
 npm run seed
