@@ -3,9 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import { type Task } from "@prisma/client";
 import List from "@/components/list";
 import TaskForm from "@/components/task_form";
+import useApi from "@/components/hooks/useApi";
 
 export default function Home() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { data: tasks, isSuccess, isPending, isError } = useApi("ft_001");
   const [openForm, setOpenForm] = useState<boolean>(false);
   const parentRef = useRef<HTMLDivElement>(null);
 
@@ -25,8 +26,16 @@ export default function Home() {
   }, [openForm]);
 
   useEffect(() => {
-    fetch("/api/tasks?user_id=ft_002").then((res) => res.json()).then((data) => setTasks(data.tasks));
-  }, []);
+    if (!isPending) {
+      if (isError) {
+        console.error("Error fetching data");
+      }
+      if (isSuccess) {
+        console.log("Data fetched successfully");
+      }
+    }
+
+  }, [isSuccess, isPending, isError]);
 
   return (
     <div className="flex flex-col gap-1 h-screen overflow-hidden">
