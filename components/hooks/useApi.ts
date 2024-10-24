@@ -53,6 +53,7 @@ const useApi = () => {
         setIsPending(true);
         setIsError(false);
         try {
+            updatedTask["id"] = parseInt(taskId);
             const res = await fetch(TASK_API_URL, {
                 method: 'PUT',
                 headers: {
