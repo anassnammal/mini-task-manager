@@ -39,5 +39,5 @@ To ensure modularity and clean separation of concerns, I also implemented:
 Feel free to:
 
 - Clone the source code and experiment with it.
-- Reach out if you'd like to discuss the project, share knowledge, or exchange tips and ideas.
+- Reach out if you'd like to discuss the code, share knowledge, or exchange tips and ideas.
 
