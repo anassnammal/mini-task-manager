@@ -1,8 +1,9 @@
 import { Task } from "@prisma/client";
 import { useState, useEffect, useCallback } from "react";
+import { TaskFormProps } from "@/lib/types";
 
-const useApi = (userId: string) => {
-const TASK_API_URL = '/api/tasks';
+const useApi = () => {
+    const TASK_API_URL = '/api/tasks';
     const [data, setData] = useState<Task[]>([]);
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [isPending, setIsPending] = useState<boolean>(false);
@@ -12,7 +13,7 @@ const TASK_API_URL = '/api/tasks';
         setIsPending(true);
         setIsError(false);
         try {
-            const res = await fetch(`/api/tasks?user_id=${userId}`);
+            const res = await fetch(TASK_API_URL);
             const result = await res.json();
             setData(result.tasks);
             setIsSuccess(true);
@@ -22,9 +23,9 @@ const TASK_API_URL = '/api/tasks';
         } finally {
             setIsPending(false);
         }
-    }, [userId]);
+    }, []);
 
-    const createData = async (newTask: Task) => {
+    const createData = async (newTask: TaskFormProps) => {
         setIsPending(true);
         setIsError(false);
         try {
@@ -46,7 +47,7 @@ const TASK_API_URL = '/api/tasks';
         }
     };
 
-    const updateData = async (taskId: string, updatedTask: Task) => {
+    const updateData = async (taskId: string, updatedTask: TaskFormProps) => {
         setIsPending(true);
         setIsError(false);
         try {
@@ -85,11 +86,7 @@ const TASK_API_URL = '/api/tasks';
         }
     };
 
-    useEffect(() => {
-        if (userId) {
-            fetchData();
-        }
-    }, [userId, fetchData]);
+    useEffect(() => { fetchData(); }, [fetchData]);
 
     return { data, isSuccess, isPending, isError, createData, updateData, deleteData };
 };

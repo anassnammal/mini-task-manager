@@ -2,16 +2,16 @@ import prisma from "@/lib/prisma";
 import { Task } from "@prisma/client";
 
 const TaskService = {
-    getTasks: async (userId: string): Promise<Task[]> => {
+    getTasks: async (): Promise<Task[]> => {
         return await prisma.task.findMany({
             orderBy: {
                 iat: "asc",
             },
-            where: {
-                user: {
-                    id: userId,
-                },
-            },
+            // where: {
+            //     status: {
+            //         not: "deleted",
+            //     },
+            // },
         });
     },
 
@@ -20,7 +20,7 @@ const TaskService = {
     },
 
     updateTask: async (taskId: number, task: Task): Promise<Task | null> => {
-        return await prisma.task.update({
+        return await prisma.task.update({   
             where: {
                 id: taskId,
             },

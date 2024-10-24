@@ -33,7 +33,7 @@ body {
     opacity: 0;
   }
   35% {
-    height: 20rem;
+    height: 24rem;
   }
   100% {
     opacity: 1;
@@ -44,4 +44,12 @@ body {
   .dropdown {
     animation: slideDown 0.75s ease-in-out;
   }
+}
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
 }
