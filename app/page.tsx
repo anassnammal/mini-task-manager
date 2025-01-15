@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import List from "@/components/list";
 import TaskForm from "@/components/task_form";
 import useApi from "@/components/hooks/useApi";
+import Loader from "@/components/loader";
+
 
 export default function Home() {
   const {
@@ -75,14 +77,27 @@ export default function Home() {
         )}
       </div>
       <div className="h-full w-full overflow-y-auto">
-        <ul className="flex flex-col gap-1">
-          <List
-            tasks={tasks}
-            setTaskId={setTaskId}
-            deleteTask={deleteData}
-            updateTask={updateData}
-          />
-        </ul>
+        {isPending && <Loader />}
+
+        {isError ? (
+          <div className="flex justify-center items-center h-full">
+            <h1 className="text-2xl text-red-600">Error fetching data</h1>
+          </div>
+        ) : tasks.length ? (
+          <ul className="flex flex-col gap-1">
+            <List
+              tasks={tasks}
+              setTaskId={setTaskId}
+              deleteTask={deleteData}
+              updateTask={updateData}
+            />
+          </ul>
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <h1 className="text-2xl text-slate-400">No tasks available</h1>
+          </div>
+        )
+        }
       </div>
 
       <div className="flex items-center justify-center text-white font-md absolute bottom-8 right-4 size-12 rounded-full bg-green-900 cursor-pointer">

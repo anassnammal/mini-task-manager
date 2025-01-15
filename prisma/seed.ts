@@ -14,8 +14,8 @@ async function main() {
     for (let i = 0; i < 25; i++) {
         await prisma.task.create({
             data: {
-                title: `${TASK_MOCK.title}${i}`,
-                desc: `${TASK_MOCK.desc}${i}`,
+                title: `${TASK_MOCK.title} ${i}`,
+                desc: `${TASK_MOCK.desc} ${i}`,
                 status: ["openclear", "in-progress", "completed"][i % 3],
                 label: ["to-do", "urgent", "important", "optional", "remainder"][i % 5],
             },

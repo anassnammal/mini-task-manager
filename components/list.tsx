@@ -39,7 +39,10 @@ const ListItem: React.FC<{
 
           <a
             className="text-green-600 cursor-pointer has-tooltip"
-            onClick={() => updateTask(task.id.toString(), { status: "completed" })}
+            onClick={() => 
+              // task.status !== "completed" && 
+              updateTask(task.id.toString(), { status: "completed" })
+            }
           >
             <svg
               width={24}
