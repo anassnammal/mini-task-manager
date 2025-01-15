@@ -5,7 +5,7 @@ const TaskService = {
     getTasks: async (): Promise<Task[]> => {
         return await prisma.task.findMany({
             orderBy: {
-                iat: "asc",
+                iat: "desc",
             },
             // where: {
             //     status: {
