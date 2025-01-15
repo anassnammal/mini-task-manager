@@ -57,7 +57,7 @@ export default function Home() {
   }, [Taskid, parentRef]);
 
   return (
-    <div className="flex flex-col gap-1 h-screen overflow-hidden">
+    <div className="flex flex-col gap-1 h-screen overflow-hidden mr-1">
       <div className="flex flex-col bg-slate-400 h-fit min-h-32 w-full shadow-current/50 shadow-md rounded-b-2xl mx-1 z-10 my-auto">
         <div className="flex items-center min-h-32 mx-auto">
           <h1 className="text-xl sm:text-3xl md:text-4xl text-white font-bold">
@@ -76,7 +76,7 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div className="h-full w-full overflow-y-auto">
+      <div className="flex-grow w-full overflow-y-auto">
         {isPending && <Loader />}
 
         {isError ? (
