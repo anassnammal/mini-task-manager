@@ -7,7 +7,7 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -33,7 +33,7 @@ body {
     opacity: 0;
   }
   35% {
-    height: 24rem;
+    height: 40rem;
   }
   100% {
     opacity: 1;
