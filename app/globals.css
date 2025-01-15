@@ -25,17 +25,19 @@ body {
     height: 0;
     opacity: 0;
   }
-  35% {
-    height: 100rem;
+  75% {
+    height: auto;
+    opacity: 0;
   }
   100% {
+    height: auto;
     opacity: 1;
   }
 }
 
 @layer components {
-  .dropdown {
-    animation: slideDown 0.75s ease-in-out;
+  .animate-slideDown {
+    animation: slideDown 0.75s ease-in-out forwards;
   }
 }
 

@@ -57,15 +57,15 @@ export default function Home() {
   }, [Taskid, parentRef]);
 
   return (
-    <div className="flex flex-col gap-1 h-screen overflow-hidden mr-1">
-      <div className="flex flex-col bg-slate-400 h-fit min-h-32 w-full shadow-current/50 shadow-md rounded-b-2xl mx-1 z-10 my-auto">
+    <div className="flex flex-col gap-1 h-screen overflow-hidden">
+      <div className="flex flex-col bg-slate-400 h-32 w-full shadow-current/50 shadow-md rounded-b-2xl z-10 my-auto">
         <div className="flex items-center min-h-32 mx-auto">
           <h1 className="text-xl sm:text-3xl md:text-4xl text-white font-bold">
             Personal Task Manager App
           </h1>
         </div>
         {openForm && (
-          <div ref={parentRef} className="h-[100rem] mb-8 mx-10 dropdown">
+          <div ref={parentRef} className="h-auto max-h-[90vh] px-10 -mt-6 pb-6 bg-slate-400 dropdown shadow-current/50 shadow-md rounded-b-2xl z-10 animate-slideDown">
             <TaskForm
               task={tasks.filter((t) => t?.id === Taskid)[0]}
               createTask={createData}
