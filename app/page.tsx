@@ -65,7 +65,7 @@ export default function Home() {
           </h1>
         </div>
         {openForm && (
-          <div ref={parentRef} className="h-[40rem] mb-8 mx-10 dropdown">
+          <div ref={parentRef} className="h-[100rem] mb-8 mx-10 dropdown">
             <TaskForm
               task={tasks.filter((t) => t?.id === Taskid)[0]}
               createTask={createData}
